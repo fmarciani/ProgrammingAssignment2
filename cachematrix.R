@@ -1,7 +1,12 @@
-## Put comments here that give an overall description of what your
-## functions do
+## These functions compute the inverse of a matrix, then cache the
+## inverse so that it can be retrieved. This means we are taking
+## advantage of the lexical scoping rules in R to preserve the matrix 
+## inverse, so that we don't have to compute it repeatedly.
 
-## Write a short comment describing this function
+## In makeCacheMatrix, we first create a "matrix" object to store our 
+## cache of the matrix inverse. The function is written so that we can 
+## a) set the value of the matrix, b) get the value of the matrix, 
+## c) set the value of the inverse, and d) get the value of the inverse.
 
 makeCacheMatrix <- function(x = matrix()) {
         inv <- NULL
@@ -18,7 +23,12 @@ makeCacheMatrix <- function(x = matrix()) {
 }
 
 
-## Write a short comment describing this function
+## cacheSolve calculates the inverse of the "matrix" created with 
+## makeCacheMatrix. cacheSolve first checks to see if the inverse 
+## has already been calculated, and if so, it retrieves the inverse 
+## from the cache, skipping the computations. If the inverse has not 
+## already been calculated, this function calculates the inverse of 
+## the matrix and caches it using the setinverse function.
 
 cacheSolve <- function(x, ...) {
         inv <- x$getinverse()
